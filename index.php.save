@@ -1,0 +1,34 @@
+<?php
+
+function random_song($dir = 'music')
+{
+    $files = glob($dir . '/*.*');
+    $file = array_rand($files);
+    return $files[$file];
+}
+
+$music_file = random_song();
+?>
+
+<!DOCTYOE html>
+<html>
+
+<head>
+<title>KjellC the dance</title>
+</head>
+
+<body bgcolor="Black">
+
+<center>
+<video id="danceVideo" autoplay loop>
+	<source src="KjellCdance.mp4" type="video/mp4">
+	Your browser is bad and you should feel bad
+</video>
+<audio id="danceSong" autoplay loop>
+	<source src="<?=random_song(); ?>" type="audio/mp3">
+	Your browser is bad and you should feel bad
+</audio>
+</center>
+
+</body>
+</html>
