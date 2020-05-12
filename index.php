@@ -62,6 +62,24 @@ $framerate = get_framerate($music_modifier);
 <script>
 	var vid = document.getElementById("danceVideo");
 	vid.playbackRate = <?=$framerate; ?>; 
+
+	window.onload = function() {
+	    //document.querySelector('video').playbackRate = 1;
+	    let video = document.querySelector('video');
+	    let promise = video.play();
+
+	    if (promise !== undefined) {
+	        promise.then(_ => {
+	            console.log("Yay, Autoplay!")
+	        }).catch(() => {
+	            video.controls = true;
+	            video.addEventListener('play', function () {
+	                video.controls = false;
+	                document.querySelector('audio').play();
+	            }, false);
+	        });
+	    }
+}
 </script>
 
 </body>
